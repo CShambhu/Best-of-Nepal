@@ -1,7 +1,5 @@
 import 'package:best_of_nepal/screens/profile_settings.dart';
-import 'package:best_of_nepal/screens/saved.dart';
 import 'package:flutter/material.dart';
-// import 'package:login_application/Profile/profilesettings.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "387202223471",
+    "project_id": "best-of-nepal",
+    "storage_bucket": "best-of-nepal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387202223471:android:00dc37479300bf5bab2c9a",
+        "android_client_info": {
+          "package_name": "com.example.best_of_nepal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMq20Wc9CoA6gqgy9bJX1M9Yxd53MUU0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
