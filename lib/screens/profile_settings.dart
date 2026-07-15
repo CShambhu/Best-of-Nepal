@@ -1,19 +1,24 @@
+import 'package:best_of_nepal/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProfileSettings extends StatefulWidget {
+class ProfileSettings extends ConsumerStatefulWidget {
   const ProfileSettings({super.key});
 
   @override
-  State<ProfileSettings> createState() => _ProfileSettingsState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ProfileSettingsState();
 }
 
-class _ProfileSettingsState extends State<ProfileSettings> {
+class _ProfileSettingsState extends ConsumerState<ProfileSettings> {
   bool _switchMode = true;
   bool _notifications = true;
   bool _biometric = false;
   String? selectedValue;
   @override
   Widget build(BuildContext context) {
+    final authState = ref.watch(authStateProvider);
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -263,7 +268,7 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                 ),
                 SizedBox(height: 10),
 
-                //Delete Account
+                //Logout Account
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -277,14 +282,19 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                     ),
                     minimumSize: Size(80, 50),
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                    await ref.read(authRepositoryProvider).signOut();
+                    if (context.mounted) {
+                      Navigator.popUntil(context, (route) => route.isFirst);
+                    }
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.delete, color: Colors.red, size: 22),
+                      Icon(Icons.logout, color: Colors.red, size: 22),
                       SizedBox(width: 10),
                       Text(
-                        "Delete Account",
+                        "Logout",
                         style: TextStyle(color: Colors.red, fontSize: 16),
                       ),
                     ],

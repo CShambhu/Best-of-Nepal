@@ -1,35 +1,21 @@
+import 'package:best_of_nepal/providers/auth_provider.dart';
 import 'package:best_of_nepal/screens/profile_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Profile extends StatefulWidget {
+class Profile extends ConsumerStatefulWidget {
   const Profile({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
-  TextEditingController dateController = TextEditingController();
-  DateTime? selectedDate;
-
-  Future<void> pickDate() async {
-    DateTime? pickedDate = await showDatePicker(
-      context: context,
-      firstDate: DateTime(1900),
-      lastDate: DateTime(3000),
-    );
-
-    if (pickedDate != null) {
-      setState(() {
-        selectedDate = pickedDate;
-      });
-      dateController.text =
-          "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
-    }
-  }
-
+class _ProfileState extends ConsumerState<Profile> {
   @override
   Widget build(BuildContext context) {
+    final authState = ref.watch(authStateProvider);
+    final email = authState.value?.email ?? 'User';
+    final emailName = email.split('@').first;
     return Scaffold(
       backgroundColor: Colors.deepPurple,
       appBar: AppBar(
@@ -37,16 +23,7 @@ class _ProfileState extends State<Profile> {
         title: Row(
           children: [
             SizedBox(width: 140),
-            Center(
-              child: Text(
-                "Profile",
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+
             Spacer(),
             IconButton(
               onPressed: () {
@@ -160,10 +137,10 @@ class _ProfileState extends State<Profile> {
                                           ],
                                         ),
                                         SizedBox(height: 20),
-                                        Text("User Name"),
+                                        Text("User Name : $emailName"),
                                         SizedBox(height: 20),
 
-                                        Text("Email"),
+                                        Text("Email : $email"),
                                         SizedBox(height: 20),
 
                                         Text(""),

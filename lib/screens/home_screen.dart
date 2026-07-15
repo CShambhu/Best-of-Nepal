@@ -1,18 +1,20 @@
+import 'package:best_of_nepal/providers/auth_provider.dart';
+import 'package:best_of_nepal/screens/auth_gate.dart';
 import 'package:best_of_nepal/screens/contributors.dart';
 import 'package:best_of_nepal/screens/home_content.dart';
-import 'package:best_of_nepal/screens/profile.dart';
 import 'package:best_of_nepal/screens/saved.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   int _selectedIndex = 0;
 
   // final List<String> _titles = ["a"];
@@ -21,10 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeContent(),
     Saved(),
     Contributors(),
-    Profile(),
+    AuthGate(),
   ];
+
   @override
   Widget build(BuildContext context) {
+    final authState = ref.watch(authStateProvider);
+    final email = authState.value?.email ?? 'User';
+    final emailName = email.split('@').first;
     return Scaffold(
       appBar: AppBar(
         leading: _selectedIndex == 0
@@ -40,12 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
         title: _selectedIndex == 0
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
-                    "Annie January",
+                    emailName,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                   ),
-                  Text("Basic Account", style: TextStyle(fontSize: 15)),
+                  // Text("Basic Account", style: TextStyle(fontSize: 15)),
                 ],
               )
             : null,
