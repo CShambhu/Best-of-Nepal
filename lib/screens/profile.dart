@@ -17,9 +17,9 @@ class _ProfileState extends ConsumerState<Profile> {
     final email = authState.value?.email ?? 'User';
     final emailName = email.split('@').first;
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      // backgroundColor: Colors.deepPurple,
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
+        // backgroundColor: Colors.deepPurple,
         title: Row(
           children: [
             SizedBox(width: 140),
@@ -32,75 +32,118 @@ class _ProfileState extends ConsumerState<Profile> {
                   MaterialPageRoute(builder: (context) => ProfileSettings()),
                 );
               },
-              icon: Icon(Icons.settings, color: Colors.white),
+              icon: Icon(Icons.settings),
             ),
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(decoration: BoxDecoration(color: Colors.deepPurple)),
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 2),
-                    child: CircleAvatar(
-                      radius: 60,
-                      backgroundColor: Colors.grey,
-                    ),
+      body: Column(
+        children: [
+          Stack(
+            children: [
+              Container(decoration: BoxDecoration(color: Colors.deepPurple)),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 2),
+                  child: CircleAvatar(radius: 60, backgroundColor: Colors.grey),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Image.asset("assets/images/girl.png", height: 100),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 75, left: 80),
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.add_a_photo),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Image.asset("assets/images/girl.png", height: 100),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 75, left: 80),
-                    child: CircleAvatar(
-                      radius: 15,
-                      backgroundColor: Colors.white,
-                      child: Icon(Icons.add_a_photo),
-                    ),
-                  ),
-                ),
+              ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 165),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          // try removing this
-                          height: 250,
-                          child: Card(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadiusGeometry.circular(20),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
+              Padding(
+                padding: const EdgeInsets.only(top: 125),
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        // try removing this
+                        height: 250,
+                        child: Card(
+                          // color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadiusGeometry.circular(20),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(Icons.person),
+                                        SizedBox(width: 10),
+                                        Text(
+                                          "Personal information",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Edit",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.deepPurple,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 20),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 30,
+                                  ),
+                                  child: Text("Username : $emailName"),
+                                ),
+                                SizedBox(height: 20),
+
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 30,
+                                  ),
+                                  child: Text("Email : $email"),
+                                ),
+                                SizedBox(height: 20),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
                                         children: [
-                                          Icon(Icons.person),
+                                          Icon(Icons.workspace_premium),
                                           SizedBox(width: 10),
                                           Text(
-                                            "Personal information",
+                                            "Your Contributions",
                                             style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold,
@@ -108,103 +151,67 @@ class _ProfileState extends ConsumerState<Profile> {
                                           ),
                                         ],
                                       ),
-                                      TextButton(
+
+                                      IconButton(
                                         onPressed: () {},
-                                        child: Text(
-                                          "Edit",
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.deepPurple,
-                                          ),
+                                        icon: Icon(
+                                          Icons.add_circle,
+                                          size: 25,
+                                          color: Colors.deepPurple,
                                         ),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 20),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 30,
-                                    ),
-                                    child: Text("User Name : $emailName"),
-                                  ),
-                                  SizedBox(height: 20),
-
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 30,
-                                    ),
-                                    child: Text("Email : $email"),
-                                  ),
-                                  SizedBox(height: 20),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(Icons.workspace_premium),
-                                            SizedBox(width: 10),
-                                            Text(
-                                              "Your Contributions",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(
-                                            Icons.add_circle,
-                                            size: 25,
-                                            color: Colors.deepPurple,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                            onPressed: () {},
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-
-                              children: [
-                                Icon(Icons.logout, color: Colors.white),
-                                SizedBox(width: 10),
-                                Text(
-                                  "LOGOUT",
-                                  style: TextStyle(color: Colors.white),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: 20),
+
+                      //Logout Account
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          backgroundColor: Colors.white,
+                          side: BorderSide(
+                            // outline border
+                            color: Colors.red,
+                            width: 2,
+                          ),
+                          minimumSize: Size(80, 50),
+                        ),
+                        onPressed: () async {
+                          await ref.read(authRepositoryProvider).signOut();
+                          if (context.mounted) {
+                            Navigator.popUntil(
+                              context,
+                              (route) => route.isFirst,
+                            );
+                          }
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.logout, color: Colors.red, size: 22),
+                            SizedBox(width: 10),
+                            Text(
+                              "Logout",
+                              style: TextStyle(color: Colors.red, fontSize: 16),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

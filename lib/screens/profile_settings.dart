@@ -266,41 +266,6 @@ class _ProfileSettingsState extends ConsumerState<ProfileSettings> {
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
-
-                //Logout Account
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    backgroundColor: Colors.white,
-                    side: BorderSide(
-                      // outline border
-                      color: Colors.red,
-                      width: 2,
-                    ),
-                    minimumSize: Size(80, 50),
-                  ),
-                  onPressed: () async {
-                    await ref.read(authRepositoryProvider).signOut();
-                    if (context.mounted) {
-                      Navigator.popUntil(context, (route) => route.isFirst);
-                    }
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.logout, color: Colors.red, size: 22),
-                      SizedBox(width: 10),
-                      Text(
-                        "Logout",
-                        style: TextStyle(color: Colors.red, fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 20),
               ],
             ),
           ),
