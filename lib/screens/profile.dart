@@ -37,17 +37,16 @@ class _ProfileState extends ConsumerState<Profile> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 600,
-            child: Stack(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
               children: [
                 Container(decoration: BoxDecoration(color: Colors.deepPurple)),
                 Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 8),
+                    padding: const EdgeInsets.only(top: 2),
                     child: CircleAvatar(
                       radius: 60,
                       backgroundColor: Colors.grey,
@@ -57,7 +56,7 @@ class _ProfileState extends ConsumerState<Profile> {
                 Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.only(top: 10),
                     child: Image.asset("assets/images/girl.png", height: 100),
                   ),
                 ),
@@ -68,195 +67,144 @@ class _ProfileState extends ConsumerState<Profile> {
                     child: CircleAvatar(
                       radius: 15,
                       backgroundColor: Colors.white,
-                      child: Icon(Icons.diamond_sharp),
+                      child: Icon(Icons.add_a_photo),
                     ),
                   ),
                 ),
 
-                Align(
-                  alignment: Alignment.topCenter,
+                Padding(
+                  padding: const EdgeInsets.only(top: 165),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 165),
-                    child: SizedBox(
-                      height: 500,
-                      // width: 390,
-                      width: double.infinity,
-                      //Outer Card
-                      child: Card(
-                        margin: EdgeInsets.zero,
-                        color: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadiusGeometry.circular(35),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5.0),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 354,
-                                // width: 365,
-                                width: double.infinity,
-                                //INNER CARD
-                                child: Card(
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadiusGeometry.circular(
-                                      20,
-                                    ),
+                    padding: const EdgeInsets.all(5.0),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          // try removing this
+                          height: 250,
+                          child: Card(
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusGeometry.circular(20),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Icon(Icons.person),
+                                          SizedBox(width: 10),
+                                          Text(
+                                            "Personal information",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "Edit",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.deepPurple,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                  SizedBox(height: 20),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 30,
+                                    ),
+                                    child: Text("User Name : $emailName"),
+                                  ),
+                                  SizedBox(height: 20),
+
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 30,
+                                    ),
+                                    child: Text("Email : $email"),
+                                  ),
+                                  SizedBox(height: 20),
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Row(
-                                              children: [
-                                                Icon(Icons.person),
-                                                SizedBox(width: 10),
-                                                Text(
-                                                  "Personal information",
-                                                  style: TextStyle(
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
+                                            Icon(Icons.workspace_premium),
+                                            SizedBox(width: 10),
                                             Text(
-                                              "Edit",
+                                              "Your Contributions",
                                               style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.deepPurple,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: 20),
-                                        Text("User Name : $emailName"),
-                                        SizedBox(height: 20),
 
-                                        Text("Email : $email"),
-                                        SizedBox(height: 20),
-
-                                        Text(""),
-                                        SizedBox(height: 40),
-
-                                        //ABOUT ME
-                                        Center(
-                                          child: SizedBox(
-                                            height: 114,
-                                            width: double.infinity,
-                                            child: Card(
-                                              color: Colors.white,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(
-                                                  10.0,
-                                                ),
-                                                child: Column(
-                                                  children: [
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Icon(
-                                                          Icons.import_contacts,
-                                                        ),
-                                                        SizedBox(width: 10),
-
-                                                        Text(
-                                                          "About Me",
-                                                          style: TextStyle(
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.symmetric(
-                                                            vertical: 5,
-                                                          ),
-                                                      child: Container(
-                                                        decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                            color: Colors.black,
-                                                            width: 1,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius.circular(
-                                                                10,
-                                                              ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets.all(
-                                                                5.0,
-                                                              ),
-                                                          child: Text(
-                                                            "Passionate about mobile app development and exploring new technologies.",
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
+                                        IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(
+                                            Icons.add_circle,
+                                            size: 25,
+                                            color: Colors.deepPurple,
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.deepPurple,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  onPressed: () {},
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-
-                                    children: [
-                                      Icon(Icons.logout, color: Colors.white),
-                                      SizedBox(width: 10),
-                                      Text(
-                                        "LOGOUT",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+
+                              children: [
+                                Icon(Icons.logout, color: Colors.white),
+                                SizedBox(width: 10),
+                                Text(
+                                  "LOGOUT",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
